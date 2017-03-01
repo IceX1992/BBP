@@ -38,7 +38,7 @@
   </web:security-constraint>
   <listener>
     <description>Servlet Context Listener Example</description>
-    <listener-class>org.unasat.listerner.OwnerContextListener</listener-class>
+    <listener-class>org.unasat.listener.OwnerContextListener</listener-class>
   </listener>
   <filter>
     <display-name>SessionExpiredFilter</display-name>
