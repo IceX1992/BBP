@@ -1,5 +1,6 @@
 package org.unasat.model;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -32,11 +33,17 @@ public class Bus implements Serializable {
     @NotBlank
     private String licencePlate;
 
-    @Column(name = "latitude", nullable = false)
+    @Column(name = "longitude",nullable = false, columnDefinition = "numeric default 0")
+    private BigDecimal longitude;
+
+    @Column(name = "latitude", nullable = false, columnDefinition = "numeric default 0")
     private BigDecimal latitude;
 
-    @Column(name = "longitude",nullable = false)
-    private BigDecimal longitude;
+    public Bus(String brand, Long maxPassengers, String licencePlate) {
+        this.brand = brand;
+        this.maxPassengers = maxPassengers;
+        this.licencePlate = licencePlate;
+    }
 
     public Long getId() {
         return id;
