@@ -37,7 +37,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="index.html" class="site_title"><i class="fa fa-bus"></i> <span>Bustracker</span></a>
+                    <a href="dashboard.jsp" class="site_title"><i class="fa fa-bus"></i> <span>Bustracker</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -74,8 +74,8 @@
                             </li>
                             <li><a><i class="fa fa-map-signs"></i> Routes <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="route_register.html">Create Route</a></li>
-                                    <li><a href="bus_overview.html">Route Overview</a></li>
+                                    <li><a href="route_register.jsp">Create Route</a></li>
+                                    <li><a href="listRoutes">Route Overview</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>

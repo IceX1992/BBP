@@ -32,6 +32,24 @@ public class Route implements Serializable {
     @Column(name = "price_per_passenger")
     private Double pricePerPassenger;
 
+    public Route(String name, String departure, String destination, Double pricePerPassenger) {
+        this.name = name;
+        this.departure = departure;
+        this.destination = destination;
+        this.pricePerPassenger = pricePerPassenger;
+    }
+
+    public Route(Long id,String name, String departure, String destination, Double pricePerPassenger) {
+        this.id = id;
+        this.name = name;
+        this.departure = departure;
+        this.destination = destination;
+        this.pricePerPassenger = pricePerPassenger;
+    }
+
+    public Route() {
+    }
+
     public Long getId() {
         return id;
     }

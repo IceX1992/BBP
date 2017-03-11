@@ -71,6 +71,7 @@
                   </div>
                 </div>
               </div>
+                <jsp:include page="footer.jsp"></jsp:include>
         <!-- /page content -->
                 <!-- Modal -->
                 <div id="editBusModal" class="modal fade" role="dialog">
@@ -83,7 +84,7 @@
                                 <h4 class="modal-title">Edit bus</h4>
                             </div>
                             <div class="modal-body">
-                                <form action="UpdateBusController" method="POST" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                <form action="listBusses" method="POST" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                                         <input type="hidden" id="busid" name="busid">
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="brand">Brand <span class="required">*</span>
@@ -105,7 +106,6 @@
                                             <input id="license-plate" class="form-control col-md-7 col-xs-12" type="text" required="required" name="license-plate">
                                         </div>
                                     </div>
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                 <input type="submit" class="btn btn-success">
@@ -131,4 +131,3 @@
                         $('#editBusModal').modal('show');
                     })
                 </script>
-<jsp:include page="footer.jsp"></jsp:include>

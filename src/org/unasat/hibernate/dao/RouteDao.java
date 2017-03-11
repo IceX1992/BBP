@@ -15,4 +15,8 @@ public interface RouteDao {
     boolean save(Route route);
 
     boolean isRouteExists(Route route);
+
+    boolean delete(Route route);
+
+    boolean update(Route route);
 }

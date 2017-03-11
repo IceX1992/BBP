@@ -5,8 +5,8 @@
   Time: 2:22 PM
   To change this template use File | Settings | File Templates.
 --%>
-<!-- page content -->
 <jsp:include page="header.jsp"></jsp:include>
+<!-- page content -->
 <div class="right_col" role="main">
     <!-- top tiles -->
     <div class="row tile_count">
@@ -261,12 +261,7 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
     </div>
+</div>
 <!-- /page content -->
 <jsp:include page="footer.jsp"></jsp:include>

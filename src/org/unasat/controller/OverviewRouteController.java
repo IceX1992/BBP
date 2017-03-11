@@ -1,8 +1,8 @@
 package org.unasat.controller;
 
-import org.unasat.hibernate.dao.HibernateBusDao;
-import org.unasat.model.Bus;
-import org.unasat.service.RegisterBusService;
+import org.unasat.hibernate.dao.HibernateRouteDao;
+import org.unasat.model.Route;
+import org.unasat.service.RegisterRouteService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,8 +16,8 @@ import java.io.PrintWriter;
 /**
  * Created by dionc on 3/11/2017.
  */
-@WebServlet("/listBusses")
-public class OverviewBusController extends HttpServlet {
+@WebServlet("/listRoutes")
+public class OverviewRouteController extends HttpServlet{
 
     private static final long serialVersionUID = 1L;
 
@@ -27,26 +27,27 @@ public class OverviewBusController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        Long busId = Long.valueOf(request.getParameter("busid"));
-        String brand = request.getParameter("brand");
-        Long maxPassengers = Long.valueOf((request.getParameter("max-passenger")));
-        String licencePlate = request.getParameter("license-plate");
-        Bus bus = new Bus(busId, brand,maxPassengers,licencePlate);
+        Long routeid = Long.valueOf(request.getParameter("routeid"));
+        String name = request.getParameter("name");
+        String departure = request.getParameter("departure");
+        String destination = request.getParameter("destination");
+        Double pricePerPassenger = Double.valueOf((request.getParameter("pricePerPassenger")));
+        Route route = new Route(routeid, name,departure,destination,pricePerPassenger);
 
         boolean result;
 
         try {
-            RegisterBusService registerBusService = new RegisterBusService(new HibernateBusDao());
+            RegisterRouteService registerRouteService = new RegisterRouteService(new HibernateRouteDao());
 
             if (request.getParameter("delete") != null) {
                 // DELETE submitted.
-                result = registerBusService.delete(bus);
+                result = registerRouteService.delete(route);
             }else{
-                result = registerBusService.update(bus);
+                result = registerRouteService.update(route);
             }
 
             if (result) {
-                response.sendRedirect("listBusses");
+                response.sendRedirect("listRoutes");
             } else {
                 //error
             }
@@ -57,9 +58,10 @@ public class OverviewBusController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("bus_overview.jsp");
-        RegisterBusService registerBusService = new RegisterBusService(new HibernateBusDao());
-        request.setAttribute("listBusses", registerBusService.getAll());
+        RequestDispatcher dispatcher = request.getRequestDispatcher("route_overview.jsp");
+        RegisterRouteService registerRouteService = new RegisterRouteService(new HibernateRouteDao());
+        request.setAttribute("listRoutes", registerRouteService.getAll());
         dispatcher.forward(request, response);
     }
+
 }

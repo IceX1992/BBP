@@ -100,4 +100,48 @@ public class HibernateRouteDao implements RouteDao {
         return result;
     }
 
+    @Override
+    public boolean delete(Route route) {
+        Session session = HibernateUtil.openSession();
+        if(!isRouteExists(route)) return false;
+
+        Transaction tx = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            session.delete(route);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return true;
+    }
+
+    @Override
+    public boolean update(Route route) {
+        Session session = HibernateUtil.openSession();
+
+        Transaction tx = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            session.saveOrUpdate(route);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return true;
+    }
+
+
 }
