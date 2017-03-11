@@ -32,21 +32,20 @@ public class Bus implements Serializable {
     @NotBlank
     private String licencePlate;
 
-    @Column(name = "longitude",nullable = false, columnDefinition = "numeric default 0")
-    private BigDecimal longitude;
-
-    @Column(name = "latitude", nullable = false, columnDefinition = "numeric default 0")
-    private BigDecimal latitude;
-
     public Bus() {
     }
 
-    public Bus(String brand, Long maxPassengers, String licencePlate, BigDecimal longitude, BigDecimal latitude) {
+    public Bus(String brand, Long maxPassengers, String licencePlate) {
         this.brand = brand;
         this.maxPassengers = maxPassengers;
         this.licencePlate = licencePlate;
-        this.longitude = longitude;
-        this.latitude = latitude;
+    }
+
+    public Bus(Long id, String brand, Long maxPassengers, String licencePlate) {
+        this.id = id;
+        this.brand = brand;
+        this.maxPassengers = maxPassengers;
+        this.licencePlate = licencePlate;
     }
 
     public Long getId() {
@@ -79,21 +78,5 @@ public class Bus implements Serializable {
 
     public void setLicencePlate(String licencePlate) {
         this.licencePlate = licencePlate;
-    }
-
-    public BigDecimal getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(BigDecimal latitude) {
-        this.latitude = latitude;
-    }
-
-    public BigDecimal getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(BigDecimal longitude) {
-        this.longitude = longitude;
     }
 }

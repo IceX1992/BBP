@@ -21,7 +21,15 @@ public class RegisterBusService {
       return busDao.save(bus);
     }
 
+    public boolean update (Bus bus){
+      return busDao.update(bus);
+    }
+
     public List<Bus> getAll(){
         return  busDao.getListOfBusses();
+    }
+
+    public boolean delete (Bus bus){
+        return busDao.delete(bus);
     }
 }

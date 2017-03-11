@@ -16,6 +16,11 @@
     <servlet-name>RegisterBusController</servlet-name>
     <servlet-class>org.unasat.controller.RegisterBusController</servlet-class>
   </servlet>
+  <servlet>
+    <display-name>UpdateBusController</display-name>
+    <servlet-name>UpdateBusController</servlet-name>
+    <servlet-class>org.unasat.controller.UpdateBusController</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>LoginController</servlet-name>
     <url-pattern>/LoginController</url-pattern>
@@ -27,6 +32,10 @@
   <servlet-mapping>
     <servlet-name>RegisterBusController</servlet-name>
     <url-pattern>/RegisterBusController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateBusController</servlet-name>
+    <url-pattern>/UpdateBusController</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>bus_register.jsp</welcome-file>

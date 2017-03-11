@@ -11,5 +11,10 @@ public interface BusDao {
     List<Bus> getListOfBusses();
     Bus getBusByBusId(String busId);
     boolean save(Bus bus);
+
+    boolean delete(Bus bus);
+
+    boolean update(Bus bus);
+
     boolean isBusExists(Bus bus);
 }

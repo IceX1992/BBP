@@ -76,7 +76,51 @@ public class HibernateBusDao implements BusDao {
         } finally {
             session.close();
         }
-        return true;    }
+        return true;
+    }
+
+    @Override
+    public boolean delete(Bus bus) {
+        Session session = HibernateUtil.openSession();
+        if(!isBusExists(bus)) return false;
+
+        Transaction tx = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            session.delete(bus);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return true;
+    }
+
+    @Override
+    public boolean update(Bus bus) {
+        Session session = HibernateUtil.openSession();
+
+        Transaction tx = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            session.saveOrUpdate(bus);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return true;
+    }
 
     @Override
     public boolean isBusExists(Bus bus){
