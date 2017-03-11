@@ -25,8 +25,7 @@ public class Bus implements Serializable {
     @NotBlank
     private String brand;
 
-    @Column(name = "max_passengers", nullable = false)
-    @NotBlank
+    @Column(name = "max_passengers")
     private Long maxPassengers;
 
     @Column(name = "licence_plate", nullable = false, length = 15)
@@ -39,10 +38,15 @@ public class Bus implements Serializable {
     @Column(name = "latitude", nullable = false, columnDefinition = "numeric default 0")
     private BigDecimal latitude;
 
-    public Bus(String brand, Long maxPassengers, String licencePlate) {
+    public Bus() {
+    }
+
+    public Bus(String brand, Long maxPassengers, String licencePlate, BigDecimal longitude, BigDecimal latitude) {
         this.brand = brand;
         this.maxPassengers = maxPassengers;
         this.licencePlate = licencePlate;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     public Long getId() {
