@@ -44,7 +44,7 @@ public class HibernateBusDao implements BusDao {
         try {
             tx = session.getTransaction();
             tx.begin();
-            Query query = session.createQuery("from Bus where id="+busId+"");
+            Query query = session.createQuery("from Bus where id="+busId);
             bus = (Bus)query.uniqueResult();
             tx.commit();
         } catch (Exception e) {

@@ -10,7 +10,7 @@ import java.util.List;
 public interface BusRouteDao {
     List<BusRoute> getListOfBusRoutes();
 
-    BusRoute getBusRouteByBusRouteId(String busRouteId);
+    BusRoute getBusRouteByBusRouteId(Long busRouteId);
 
     boolean save(BusRoute busRoute);
 

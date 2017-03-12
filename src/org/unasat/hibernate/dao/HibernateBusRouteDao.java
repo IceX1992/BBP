@@ -35,14 +35,14 @@ public class HibernateBusRouteDao implements BusRouteDao {
     }
 
     @Override
-    public BusRoute getBusRouteByBusRouteId(String busRouteId) {
+    public BusRoute getBusRouteByBusRouteId(Long busRouteId) {
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
         BusRoute busRoute = null;
         try {
             tx = session.getTransaction();
             tx.begin();
-            Query query = session.createQuery("from BusRoute where id=" + busRouteId + "");
+            Query query = session.createQuery("from BusRoute where id=" + busRouteId);
             busRoute = (BusRoute) query.uniqueResult();
             tx.commit();
         } catch (Exception e) {

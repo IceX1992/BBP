@@ -46,11 +46,11 @@ public class OverviewBusRouteController extends HttpServlet{
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        String busPlate = request.getParameter("busPlate");
-        String routeName = request.getParameter("routeName");
-        Bus bus = new HibernateBusDao().getBusByBusPlate(busPlate);
-        Route route = new HibernateRouteDao().getRouteByRouteName(routeName);
-        String busRouteName = bus.getBrand() + " from " + route.getDeparture() + " to " + route.getDestination();
+        Long busId = Long.valueOf(request.getParameter("busId"));
+        Long routeId = Long.valueOf(request.getParameter("routeId"));
+        Bus bus = new HibernateBusDao().getBusByBusId(busId);
+        Route route = new HibernateRouteDao().getRouteByRouteId(routeId);
+        String busRouteName = bus.getBrand() + " " + bus.getLicencePlate() + " from " + route.getDeparture() + " to " + route.getDestination();
         BusRoute busRoute = new BusRoute(busRouteName, estimatedDeparture, estimatedDArrival,bus,route);
 
         boolean result;

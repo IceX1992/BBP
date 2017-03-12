@@ -74,30 +74,49 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="busPlate" class="control-label col-md-3 col-sm-3 col-xs-12">Bus*<span
+                                <label for="bus" class="control-label col-md-3 col-sm-3 col-xs-12">Bus*<span
                                         class="required">*</span></label>
-                                <select id="busPlate" name="busPlate" class="col-md-3 col-sm-3  col-xs-12" required>
+                                <select id="bus" name="bus" class="col-md-3 col-sm-3  col-xs-12" required>
+                                    <option disabled selected value> -- select an option -- </option>
                                     <c:forEach var="listValue" items="${listBusses}">
-                                        <option>
+                                        <option data-busid="${listValue.id}">
                                                 ${listValue.licencePlate}
                                         </option>
                                     </c:forEach>
 
                                 </select>
                             </div>
+                            <input type="hidden" id="busId" name="busId">
 
                             <div class="form-group">
-                                <label for="routeName" class="control-label col-md-3 col-sm-3 col-xs-12">Route*<span
+                                <label for="route" class="control-label col-md-3 col-sm-3 col-xs-12">Route*<span
                                         class="required">*</span></label>
-                                <select id="routeName" name="routeName" class="col-md-3 col-sm-3 col-xs-12" required>
+                                <select id="route" name="route" class="col-md-3 col-sm-3 col-xs-12" required>
+                                    <option disabled selected value> -- select an option -- </option>
                                     <c:forEach var="listValue" items="${listRoutes}">
-                                        <option>
+                                        <option data-routeid="${listValue.id}">
                                                 ${listValue.name}
                                         </option>
                                     </c:forEach>
 
                                 </select>
                             </div>
+                            <input type="hidden" id="routeId" name="routeId">
+
+                            <script>
+                                document.getElementById('bus').onchange = function () {
+                                    var selected = $(this).find('option:selected');
+                                    var busid = selected.data().busid;
+                                    $("#busId").val(busid);
+                                };
+                                document.getElementById('route').onchange = function () {
+                                    var selected = $(this).find('option:selected');
+                                    var routeid = selected.data().routeid;
+                                    $("#routeId").val(routeid);
+                                };
+                            </script>
+
+
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                     <input type="submit" class="btn btn-success" value="Create">

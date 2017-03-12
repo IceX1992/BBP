@@ -46,51 +46,81 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="soldTickets">Tickets sold <span class="required">*</span>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="maxPass">Max passengers<span class="required">*</span>
                                 </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="number" id="soldTickets" name="soldTickets" min=0 required="required" class="form-control col-md-7 col-xs-12">
+                                <div class="col-md-2 col-sm-2 col-xs-4">
+                                    <input type="number" id="maxPass" name="maxPass" disabled class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
 
-
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="soldTickets">Tickets sold <span class="required">*</span>
+                                </label>
+                                <div class="col-md-2 col-sm-2 col-xs-4">
+                                    <input type="number" id="soldTickets" name="soldTickets" min=0 required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label for="busRoute" class="control-label col-md-3 col-sm-3 col-xs-12">BusRoute*<span
                                         class="required">*</span></label>
                                 <select id="busRoute" name="busRoute" class="col-md-3 col-sm-3  col-xs-12"
-                                     <%--   required onchange="myFunction()" data-name=${listValue.busRoute} data-dep=${listValue.estimatedDeparture}data-arr=${listValue.estimatedDArrival}--%>
-                                >
+                                       required>
+
+                                    <option disabled selected value> -- select an option -- </option>
+
                                     <c:forEach var="listValue" items="${listBusRoutes}">
-                                        <option>
+                                        <option data-name="${listValue.busRoute}" data-depart="${listValue.estimatedDeparture}"
+                                                data-arr="${listValue.estimatedDArrival}" data-busrouteid="${listValue.id}"
+                                                data-maxpassengers = "${listValue.bus.maxPassengers}">
+
                                                 ${listValue.busRoute}
                                         </option>
-
-                                               est dep: ${listValue.estimatedDeparture}
-
-
-                                               est arr: ${listValue.estimatedDArrival}
-
                                     </c:forEach>
-
                                 </select>
                             </div>
-<%--
 
-                            <p id="demo">${listValue.estimatedDeparture}</p>
-                            <p id="demo2"  id="busid" name="busid"></p>
+                            <input type="hidden" id="busRouteId" name="busRouteId">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="estDep">Estimated departure:<span class="required">*</span>
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="text" id="estDep" name="estDep" disabled class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="estArr">Estimated arrival:<span class="required">*</span>
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="text" id="estArr" name="estArr" disabled class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
 
                             <script>
-                                function myFunction() {
-
-                                    var busid = $(this).data().dep;
-
-
-                                    $("#busid").val(busid);
-
-                                }
+                                document.getElementById('busRoute').onchange = function () {
+                                    var selected = $(this).find('option:selected');
+                                    var depart = selected.data().depart;
+                                    var arr = selected.data().arr;
+                                    var busRouteId = selected.data().busrouteid;
+                                    var maxpassengers = selected.data().maxpassengers;
+                                    $("#estDep").val(depart);
+                                    $("#estArr").val(arr);
+                                    $("#busRouteId").val(busRouteId);
+                                    $("#maxPass").val(maxpassengers);
+                                    //currently from the db we get times like: 2014-01-02 11:42:13 while it needs to be like 2014-01-02T11:42:13 to be put in datetime
+                                    depart = depart.replace(/\s/g, "T");
+                                    arr = arr.replace(/\s/g, "T");
+                                    $("#actualDeparture").val(depart);
+                                    $("#actualArrival").val(arr);
+                                    //set soldTickets max to maxPassengers value
+                                    $("#soldTickets").attr({
+                                        "max" : maxpassengers,
+                                        "min" : 0
+                                    });
+                                };
                             </script>
---%>
+
 
 
 
@@ -127,14 +157,14 @@
                             <thead>
                             <tr>
                                 <th>Ride id</th>
-                                <th>estimatedDeparture</th>
-                                <th>estimatedDArrival</th>
-                                <th>actualDeparture</th>
-                                <th>actualArrival</th>
-                                <th>soldTickets</th>
-                                <th>Bus plate</th>
-                                <th>Maximum passengers</th>
                                 <th>Route name</th>
+                                <th>Estimated Departure</th>
+                                <th>Actual Departure</th>
+                                <th>Estimated Arrival</th>
+                                <th>Actual Arrival</th>
+                                <th>Sold tickets</th>
+                                <th>Maximum passengers</th>
+                                <th>Bus plate</th>
                             </tr>
                             </thead>
 
@@ -147,13 +177,16 @@
                                             ${listValue.id}
                                     </td>
                                     <td>
+                                            ${listValue.busRoute.route.name}
+                                    </td>
+                                    <td>
                                             ${listValue.busRoute.estimatedDeparture}
                                     </td>
                                     <td>
-                                            ${listValue.busRoute.estimatedDArrival}
+                                            ${listValue.actualDeparture}
                                     </td>
                                     <td>
-                                            ${listValue.actualDeparture}
+                                            ${listValue.busRoute.estimatedDArrival}
                                     </td>
                                     <td>
                                             ${listValue.actualArrival}
@@ -162,13 +195,10 @@
                                             ${listValue.soldTickets}
                                     </td>
                                     <td>
-                                            ${listValue.busRoute.bus.licencePlate}
-                                    </td>
-                                    <td>
                                             ${listValue.busRoute.bus.maxPassengers}
                                     </td>
                                     <td>
-                                            ${listValue.busRoute.route.name}
+                                            ${listValue.busRoute.bus.licencePlate}
                                     </td>
                                 </tr>
 

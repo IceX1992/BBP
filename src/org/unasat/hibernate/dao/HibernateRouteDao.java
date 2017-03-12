@@ -43,7 +43,7 @@ public class HibernateRouteDao implements RouteDao {
         try {
             tx = session.getTransaction();
             tx.begin();
-            Query query = session.createQuery("from Ride where id=" + routeId + "");
+            Query query = session.createQuery("from Route where id=" + routeId);
             route = (Route) query.uniqueResult();
             tx.commit();
         } catch (Exception e) {

@@ -23,7 +23,6 @@ public class Ride {
     private Date actualArrival;
 
     @Column(name = "sold_tickets")
-    @NotBlank
     private Long soldTickets;
 
     @ManyToOne(cascade = CascadeType.ALL)

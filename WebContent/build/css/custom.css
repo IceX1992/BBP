@@ -1,31 +1,19 @@
 
 html , body{
-	
- height:100%;
- 
-}
 
-/*header*/
-.sbt-logo.png{
-    width: 70%;
-    /*  background: #fff;*/
-    margin-left: 15%;
-    z-index: 1000;
-    position: inherit;
-    margin-top: 5px;
-    /*border: 1px solid rgba(52, 73, 94, 0.44);*/
-    padding: 0px
+    height:100%;
+
 }
 
 .full-width {
-	
- width:100%;
- 
- }
- 
+
+    width:100%;
+
+}
+
 .full-height{
- height:100%;
- }
+    height:100%;
+}
 
 .daterangepicker .ranges li {
     color: #73879C
@@ -206,7 +194,6 @@ html , body{
     font-weight: 400;
     font-size: 10px;
     padding: 10px 5px
-
 }
 .nav-sm .nav.child_menu li.active,
 .nav-sm .nav.side-menu li.active-sm {
@@ -269,19 +256,25 @@ html , body{
     width: 35%;
     float: left
 }
-
+.img-circle.profile_img {
+    width: 70%;
+    background: #fff;
+    margin-left: 15%;
+    z-index: 1000;
+    position: inherit;
+    margin-top: 20px;
+    border: 1px solid rgba(52, 73, 94, 0.44);
+    padding: 4px
+}
 .profile_info {
     padding: 25px 10px 10px;
     width: 65%;
-    float: left;
-    margin-top: 100px;
-    text-align: center;
+    float: left
 }
 .profile_info span {
     font-size: 13px;
     line-height: 30px;
-    color: #BAB8B8;
-    text-align: center;
+    color: #BAB8B8
 }
 .profile_info h2 {
     font-size: 14px;
@@ -728,7 +721,6 @@ a:focus {
     cursor: pointer
 }
 .nav.side-menu>li>a {
-
     margin-bottom: 6px
 }
 .nav.side-menu>li>a:hover {
@@ -823,7 +815,7 @@ a:focus {
     margin-left: 0 !important;
     line-height: 59px;
     display: block;
-    height: 300px;
+    height: 55px;
     margin: 0;
     padding-left: 10px
 }
@@ -1674,7 +1666,7 @@ span.right {
     position: fixed;
     width: 230px;
     background: #2A3F54;
-	z-index:999;
+    z-index:999;
 }
 .sidebar-footer a {
     padding: 7px 0 3px;
@@ -4187,10 +4179,8 @@ ul.notifications {
 
 
 @media (max-width: 767px) {
-   .dataTables_length { float:none; }
+    .dataTables_length { float:none; }
 }
-
-
 
 
 
@@ -4243,9 +4233,9 @@ ul.notifications {
 table thead .checkbox { margin-top:-7px;margin-top:-21px; }
 table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 */
-			
+
 .daterangepicker.xdisplay { width:228px; }
 
 .dataTables_wrapper > .row{
-  overflow:auto !important; /*prevent datatables overflowing its container*/
+    overflow:auto !important; /*prevent datatables overflowing its container*/
 }

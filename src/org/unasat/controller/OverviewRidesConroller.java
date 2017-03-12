@@ -44,8 +44,10 @@ public class OverviewRidesConroller extends HttpServlet{
             e.printStackTrace();
         }
         Long soldTickets = Long.valueOf(request.getParameter("soldTickets"));
-        String busRouteName = request.getParameter("name");
-        BusRoute busRoute = new HibernateBusRouteDao().getBusRouteByBusRouteName(busRouteName);
+        //String busRouteName = request.getParameter("name");
+        Long busRouteId = Long.valueOf(request.getParameter("busRouteId"));
+        BusRoute busRoute = new HibernateBusRouteDao().getBusRouteByBusRouteId(busRouteId);
+        //BusRoute busRoute = new HibernateBusRouteDao().getBusRouteByBusRouteName(busRouteName);
         Ride ride = new Ride(actualDeparture,actualArrival,soldTickets,busRoute);
 
         boolean result;
