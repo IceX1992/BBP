@@ -2,7 +2,7 @@
 <!-- footer content -->
 <footer>
     <div class="pull-right">
-        &copy; Bustracker Suriname
+       Suriname Bus Tracker &copy;
     </div>
     <div class="clearfix"></div>
 </footer>
