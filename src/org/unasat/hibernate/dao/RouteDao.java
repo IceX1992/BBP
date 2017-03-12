@@ -10,7 +10,9 @@ import java.util.List;
 public interface RouteDao {
     List<Route> getListOfRoutes();
 
-    Route getRouteByRouteId(String routeId);
+    Route getRouteByRouteId(Long routeId);
+
+    Route getRouteByRouteName(String routeName);
 
     boolean save(Route route);
 

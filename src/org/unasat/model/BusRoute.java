@@ -3,6 +3,7 @@ package org.unasat.model;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by dionc on 2/25/2017.
@@ -17,18 +18,27 @@ public class BusRoute{
     private Long id;
 
     @Column(name = "estimated_departure", nullable = false, columnDefinition = "DATETIME")
-    @NotBlank
-    private String estimatedDeparture;
+    private Date estimatedDeparture;
 
     @Column(name = "estimated_arrival", nullable = false, columnDefinition = "DATETIME")
-    @NotBlank
-    private String estimatedDArrival;
+    private Date estimatedDArrival;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Bus bus;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Route route;
+
+
+    public BusRoute(Date estimatedDeparture, Date estimatedDArrival, Bus bus, Route route) {
+        this.estimatedDeparture = estimatedDeparture;
+        this.estimatedDArrival = estimatedDArrival;
+        this.bus = bus;
+        this.route = route;
+    }
+
+    public BusRoute() {
+    }
 
     public Long getId() {
         return id;
@@ -38,19 +48,19 @@ public class BusRoute{
         this.id = id;
     }
 
-    public String getEstimatedDeparture() {
+    public Date getEstimatedDeparture() {
         return estimatedDeparture;
     }
 
-    public void setEstimatedDeparture(String estimatedDeparture) {
+    public void setEstimatedDeparture(Date estimatedDeparture) {
         this.estimatedDeparture = estimatedDeparture;
     }
 
-    public String getEstimatedDArrival() {
+    public Date getEstimatedDArrival() {
         return estimatedDArrival;
     }
 
-    public void setEstimatedDArrival(String estimatedDArrival) {
+    public void setEstimatedDArrival(Date estimatedDArrival) {
         this.estimatedDArrival = estimatedDArrival;
     }
 

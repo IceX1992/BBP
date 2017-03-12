@@ -9,7 +9,11 @@ import java.util.List;
  */
 public interface BusDao {
     List<Bus> getListOfBusses();
-    Bus getBusByBusId(String busId);
+
+    Bus getBusByBusId(Long busId);
+
+    Bus getBusByBusPlate(String busPlate);
+
     boolean save(Bus bus);
 
     boolean delete(Bus bus);

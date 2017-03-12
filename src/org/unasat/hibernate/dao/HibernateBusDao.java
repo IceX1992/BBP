@@ -37,7 +37,7 @@ public class HibernateBusDao implements BusDao {
     }
 
     @Override
-    public Bus getBusByBusId(String busId) {
+    public Bus getBusByBusId(Long busId) {
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
         Bus bus = null;
@@ -45,6 +45,28 @@ public class HibernateBusDao implements BusDao {
             tx = session.getTransaction();
             tx.begin();
             Query query = session.createQuery("from Bus where id="+busId+"");
+            bus = (Bus)query.uniqueResult();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return bus;    }
+
+    @Override
+    public Bus getBusByBusPlate(String busPlate) {
+        Session session = HibernateUtil.openSession();
+        Transaction tx = null;
+        Bus bus = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            Query query = session.createQuery("from Bus where licencePlate=:licPlate");
+            query.setParameter("licPlate", busPlate);
             bus = (Bus)query.uniqueResult();
             tx.commit();
         } catch (Exception e) {

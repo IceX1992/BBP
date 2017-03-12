@@ -17,7 +17,7 @@ public class Route implements Serializable {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false,unique = true)
     @NotBlank
     private String name;
 

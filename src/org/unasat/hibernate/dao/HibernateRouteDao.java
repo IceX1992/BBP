@@ -36,7 +36,7 @@ public class HibernateRouteDao implements RouteDao {
     }
 
     @Override
-    public Route getRouteByRouteId(String routeId) {
+    public Route getRouteByRouteId(Long routeId) {
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
         Route route = null;
@@ -44,6 +44,30 @@ public class HibernateRouteDao implements RouteDao {
             tx = session.getTransaction();
             tx.begin();
             Query query = session.createQuery("from Ride where id=" + routeId + "");
+            route = (Route) query.uniqueResult();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return route;
+    }
+
+    @Override
+    public Route getRouteByRouteName(String routeName) {
+        Session session = HibernateUtil.openSession();
+        Transaction tx = null;
+        Route route = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            Query query = session.createQuery("from Route where name=:routeName");
+            query.setParameter("routeName", routeName);
+            route = (Route) query.uniqueResult();
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {

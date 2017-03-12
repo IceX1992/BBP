@@ -28,7 +28,7 @@ public class Bus implements Serializable {
     @Column(name = "max_passengers")
     private Long maxPassengers;
 
-    @Column(name = "licence_plate", nullable = false, length = 15)
+    @Column(name = "licence_plate",unique = true, nullable = false, length = 15)
     @NotBlank
     private String licencePlate;
 
