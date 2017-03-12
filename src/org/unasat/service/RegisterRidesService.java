@@ -21,6 +21,20 @@ public class RegisterRidesService {
         return rideDao.save(ride);
     }
 
+    public int countRides(){
+        List<Ride> rideList = rideDao.getListOfRides();
+        return  rideList.size();
+    }
+
+    public int getSoldTicketsCount(){
+        List<Ride> rideList = rideDao.getListOfRides();
+        int count = 0;
+        for(Ride ride : rideList){
+            count = (int) (count + ride.getSoldTickets());
+        }
+        return  count;
+    }
+
     public List<Ride> getAll(){
         return  rideDao.getListOfRides();
     }

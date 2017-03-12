@@ -69,9 +69,11 @@ public class OverviewRidesConroller extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("rides_overview.jsp");
+
         RegisterBusRouteService registerBusRouteService = new RegisterBusRouteService(new HibernateBusRouteDao());
         RegisterRidesService registerRidesService = new RegisterRidesService(new HibernateRideDao());
-        request.setAttribute("listBusRoutes", registerBusRouteService.getAll());
+        //request.setAttribute("listBusRoutes", registerBusRouteService.getAll());
+        request.setAttribute("listBusRoutes", registerBusRouteService.getListOfBusRoutesNotUsedRides());
         request.setAttribute("listRides", registerRidesService.getAll());
         dispatcher.forward(request, response);
     }

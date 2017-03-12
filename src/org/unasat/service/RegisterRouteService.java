@@ -17,6 +17,10 @@ public class RegisterRouteService {
         this.routeDao = routeDao;
     }
 
+    public Route findById(Long id){
+        return routeDao.getRouteByRouteId(id);
+    }
+
     public boolean register (Route route){
         return routeDao.save(route);
     }

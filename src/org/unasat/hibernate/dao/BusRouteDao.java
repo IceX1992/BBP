@@ -10,11 +10,17 @@ import java.util.List;
 public interface BusRouteDao {
     List<BusRoute> getListOfBusRoutes();
 
+    List<BusRoute> getListOfBusRoutesNotUsedRides();
+
     BusRoute getBusRouteByBusRouteId(Long busRouteId);
+
+    List<BusRoute> getBusRouteLate();
 
     boolean save(BusRoute busRoute);
 
     BusRoute getBusRouteByBusRouteName(String busRouteName);
 
     boolean isBusRouteExists(BusRoute busRoute);
+
+    Long countRoute(Long busId);
 }

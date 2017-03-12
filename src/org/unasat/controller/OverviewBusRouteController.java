@@ -76,6 +76,7 @@ public class OverviewBusRouteController extends HttpServlet{
         RequestDispatcher dispatcher = request.getRequestDispatcher("bus_route_overview.jsp");
         RegisterBusRouteService registerBusRouteService = new RegisterBusRouteService(new HibernateBusRouteDao());
         RegisterBusService registerBusService = new RegisterBusService(new HibernateBusDao());
+        int t = registerBusService.countBusses();
         RegisterRouteService registerRouteService = new RegisterRouteService(new HibernateRouteDao());
         request.setAttribute("listBusRoutes", registerBusRouteService.getAll());
         request.setAttribute("listBusses", registerBusService.getAll());

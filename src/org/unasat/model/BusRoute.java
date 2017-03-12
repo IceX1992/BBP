@@ -42,6 +42,15 @@ public class BusRoute{
         this.route = route;
     }
 
+    public BusRoute(Long id, String busRoute, Date estimatedDeparture, Date estimatedDArrival, Bus bus, Route route) {
+        this.id = id;
+        this.busRoute = busRoute;
+        this.estimatedDeparture = estimatedDeparture;
+        this.estimatedDArrival = estimatedDArrival;
+        this.bus = bus;
+        this.route = route;
+    }
+
     public BusRoute() {
     }
 
