@@ -1,9 +1,7 @@
 package org.unasat.service;
 
 import org.unasat.hibernate.dao.BusRouteDao;
-import org.unasat.model.Bus;
 import org.unasat.model.BusRoute;
-import org.unasat.model.Route;
 
 import java.util.List;
 
@@ -14,10 +12,6 @@ public class RegisterBusRouteService {
 
     BusRouteDao busRouteDao;
 
-    RegisterBusService registerBusService;
-
-    RegisterRouteService registerRouteService;
-
     public RegisterBusRouteService(BusRouteDao busRouteDao) {
         super();
         this.busRouteDao = busRouteDao;
@@ -27,16 +21,12 @@ public class RegisterBusRouteService {
         return busRouteDao.save(busRoute);
     }
 
+    public BusRoute findByBusRouteName(String busRouteName){
+        return busRouteDao.getBusRouteByBusRouteName(busRouteName);
+    }
+
     public List<BusRoute> getAll(){
         return  busRouteDao.getListOfBusRoutes();
-    }
-
-    public List<Bus> getAllBusses(){
-        return registerBusService.getAll();
-    }
-
-    public List<Route> getAllRoutes(){
-        return registerRouteService.getAll();
     }
 
 }

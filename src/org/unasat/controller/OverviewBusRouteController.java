@@ -50,7 +50,8 @@ public class OverviewBusRouteController extends HttpServlet{
         String routeName = request.getParameter("routeName");
         Bus bus = new HibernateBusDao().getBusByBusPlate(busPlate);
         Route route = new HibernateRouteDao().getRouteByRouteName(routeName);
-        BusRoute busRoute = new BusRoute(estimatedDeparture, estimatedDArrival,bus,route);
+        String busRouteName = bus.getBrand() + " from " + route.getDeparture() + " to " + route.getDestination();
+        BusRoute busRoute = new BusRoute(busRouteName, estimatedDeparture, estimatedDArrival,bus,route);
 
         boolean result;
 

@@ -14,5 +14,7 @@ public interface BusRouteDao {
 
     boolean save(BusRoute busRoute);
 
+    BusRoute getBusRouteByBusRouteName(String busRouteName);
+
     boolean isBusRouteExists(BusRoute busRoute);
 }

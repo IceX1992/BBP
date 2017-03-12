@@ -78,6 +78,30 @@ public class HibernateBusRouteDao implements BusRouteDao {
         return true;
     }
 
+
+    @Override
+    public BusRoute getBusRouteByBusRouteName(String busRouteName) {
+        Session session = HibernateUtil.openSession();
+        Transaction tx = null;
+        BusRoute busRoute = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            Query query = session.createQuery("from BusRoute where busRoute=:busRoute");
+            query.setParameter("busRoute", busRouteName);
+            busRoute = (BusRoute) query.uniqueResult();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return busRoute;
+    }
+
     @Override
     public boolean isBusRouteExists(BusRoute busRoute) {
         Session session = HibernateUtil.openSession();

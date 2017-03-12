@@ -17,11 +17,9 @@ public class Ride {
     private Long id;
 
     @Column(name = "actual_departure", nullable = false, columnDefinition = "DATETIME")
-    @NotBlank
     private Date actualDeparture;
 
     @Column(name = "actual_arrival", nullable = false, columnDefinition = "DATETIME")
-    @NotBlank
     private Date actualArrival;
 
     @Column(name = "sold_tickets")
@@ -30,6 +28,16 @@ public class Ride {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private BusRoute busRoute;
+
+    public Ride(Date actualDeparture, Date actualArrival, Long soldTickets, BusRoute busRoute) {
+        this.actualDeparture = actualDeparture;
+        this.actualArrival = actualArrival;
+        this.soldTickets = soldTickets;
+        this.busRoute = busRoute;
+    }
+
+    public Ride() {
+    }
 
     public Long getId() {
         return id;

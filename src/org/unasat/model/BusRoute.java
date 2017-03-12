@@ -17,6 +17,10 @@ public class BusRoute{
     @GeneratedValue
     private Long id;
 
+    @Column(name = "name", nullable = false)
+    @NotBlank
+    private String busRoute;
+
     @Column(name = "estimated_departure", nullable = false, columnDefinition = "DATETIME")
     private Date estimatedDeparture;
 
@@ -30,7 +34,8 @@ public class BusRoute{
     private Route route;
 
 
-    public BusRoute(Date estimatedDeparture, Date estimatedDArrival, Bus bus, Route route) {
+    public BusRoute(String busRoute, Date estimatedDeparture, Date estimatedDArrival, Bus bus, Route route) {
+        this.busRoute = busRoute;
         this.estimatedDeparture = estimatedDeparture;
         this.estimatedDArrival = estimatedDArrival;
         this.bus = bus;
@@ -38,6 +43,14 @@ public class BusRoute{
     }
 
     public BusRoute() {
+    }
+
+    public String getBusRoute() {
+        return busRoute;
+    }
+
+    public void setBusRoute(String busRoute) {
+        this.busRoute = busRoute;
     }
 
     public Long getId() {
