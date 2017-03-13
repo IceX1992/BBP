@@ -10,6 +10,8 @@ import java.util.List;
 public interface RideDao {
     List<Ride> getListOfRides();
 
+    List<Ride> getListOfLateRides();
+
     Ride getRideByRideId(String rideId);
 
     boolean save(Ride ride);

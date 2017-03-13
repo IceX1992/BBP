@@ -13,6 +13,7 @@ import java.util.List;
  * Created by justi on 3/4/2017.
  */
 public class HibernateRideDao implements RideDao {
+
     @Override
     public List<Ride> getListOfRides() {
         List<Ride> list = new ArrayList<Ride>();
@@ -22,6 +23,28 @@ public class HibernateRideDao implements RideDao {
             tx = session.getTransaction();
             tx.begin();
             list = session.createQuery("from Ride").list();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+
+    @Override
+    public List<Ride> getListOfLateRides() {
+        List<Ride> list = new ArrayList<Ride>();
+        Session session = HibernateUtil.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            Query query2 = session.createSQLQuery("select ride.* from ride  join bus_route on ride.busRoute_id = bus_route.id where ride.actual_arrival > bus_route.estimated_arrival");
+            list = query2.list();
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {

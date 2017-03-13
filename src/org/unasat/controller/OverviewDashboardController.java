@@ -99,6 +99,7 @@ public class OverviewDashboardController extends HttpServlet{
         request.setAttribute("maxPassengers", registerBusService.getMaxCount());
         request.setAttribute("ridesCount", registerRidesService.countRides());
         request.setAttribute("soldTickets", registerRidesService.getSoldTicketsCount());
+        request.setAttribute("lateRides", registerRidesService.getListOfLateRides());
         dispatcher.forward(request, response);
     }
 }
