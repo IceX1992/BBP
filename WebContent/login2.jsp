@@ -53,7 +53,7 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Suri bus!</h1>
+                  <h1><img src="images/sbt-logo-small.png"></h1>
                 </div>
               </div>
             </form>
@@ -88,8 +88,8 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                  <h1><img src="images/sbt-logo-small.png"></h1>
+                  <p></p>
                 </div>
               </div>
             </form>
