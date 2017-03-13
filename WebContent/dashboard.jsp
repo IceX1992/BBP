@@ -115,8 +115,8 @@
             </div>
         </div>
 
-        <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="x_panel tile fixed_height_320 overflow_hidden">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
                 <div class="x_title">
                     <h2>Late buses</h2>
                     <div class="clearfix"></div>
@@ -125,10 +125,12 @@
                     <table id="datatable" class="table table-striped table-bordered bus-overview-table">
                         <thead>
                         <tr>
-                            <th>ac dept</th>
-                            <th>ac arr</th>
-                            <th>sold tick</th>
-                            <th>busroute</th>
+                            <th>Estimated Departure</th>
+                            <th>Actual Departure</th>
+                            <th>Estimated Arrival</th>
+                            <th>Actual Arrival</th>
+                            <th>Sold tickets</th>
+                            <th>Busroute</th>
                         </tr>
                         </thead>
 
@@ -138,7 +140,13 @@
                         <c:forEach var="listValue" items="${lateRides}">
                             <tr>
                                 <td>
+                                        ${listValue.busRoute.estimatedDeparture}
+                                </td>
+                                <td>
                                         ${listValue.actualDeparture}
+                                </td>
+                                <td>
+                                        ${listValue.busRoute.estimatedDArrival}
                                 </td>
                                 <td>
                                         ${listValue.actualArrival}
