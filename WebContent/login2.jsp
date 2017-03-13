@@ -88,7 +88,7 @@
                 <br />
 
                 <div>
-                  <h1><img src="images/sbt-logo-small.png"></h1>
+                    <h1><img src="images/sbt-logo-small.png"></h1>
                   <p></p>
                 </div>
               </div>
