@@ -56,7 +56,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <h4>Top 5 Drukste routes in aantal ritten</h4>
+                    <h4>Top 5 Drukste routes in aantal route_bussen</h4>
                     <h4 class="pull-right">test</h4>
 
                     <c:forEach var="listValue" items="${routeCountObject}">

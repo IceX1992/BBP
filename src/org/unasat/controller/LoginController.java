@@ -32,17 +32,11 @@ public class LoginController extends HttpServlet {
 			
 			User user = loginService.getUserByUserId(userId);
 			session.setAttribute("user", user);
-			
-			List<User> list = loginService.getListOfUsers();
-			session.setAttribute("listOfUsers", list);
-			
-			ServletContext ctx = getServletContext();      
-			session.setAttribute("owner", ctx.getAttribute("owner"));
-			
+
 			session.setMaxInactiveInterval(10);
-			response.sendRedirect("home.jsp");
+			response.sendRedirect("dashboard");
 		} else {
-			response.sendRedirect("error.jsp");
+			response.sendRedirect("login2.jsp");
 		}
 	}
 

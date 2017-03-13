@@ -78,23 +78,22 @@ public class OverviewDashboardController extends HttpServlet{
             routeCount.setCount(test);
             routeCount.setName(routename);
             countAllRoutes= countAllRoutes + test;
-            if(routeCountList.size() < 5) {
-                routeCountList.add(routeCount);
-            }
+            routeCountList.add(routeCount);
         }
-
-
-
         for(RouteCount routeCount1 : routeCountList){
             routeCount1.setCountPerc(routeCount1.getCount() * 100 / countAllRoutes );
             routeCountList2.add(routeCount1);
         }
 
+        //insert them from lowest number of routes to highes
         RouteCount[] routeCounts = doInsertionSort(routeCountList2);
-        List<RouteCount> routeCountList1 = Arrays.asList(routeCounts);
+        List<RouteCount> routeCountList1 = new ArrayList<RouteCount>(Arrays.asList(routeCounts));
+        //reverse to highest to low
         Collections.reverse(routeCountList1);
-        //request.setAttribute("routeList",routeList);
-        //request.setAttribute("routeCount",longList);
+        //we only show top 5 highest, so remove all after the top 5
+        for(int i = routeCountList1.size(); i > 5;i--){
+            routeCountList1.remove(i-1);
+        }
         request.setAttribute("routeCountObject",routeCountList1);
         request.setAttribute("countBus", registerBusService.countBusses());
         request.setAttribute("maxPassengers", registerBusService.getMaxCount());

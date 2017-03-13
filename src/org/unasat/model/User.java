@@ -18,14 +18,7 @@ public class User implements Serializable {
     
     @Id @GeneratedValue
     private Long id;
-    
-    @NotBlank(message="Mag niet leeg zijn!!")
-    private String firstName;
-    
-    private String middleName;
-    @NotBlank
-    private String lastName;
-    
+
     @Email
     private String email;
     
@@ -40,46 +33,18 @@ public class User implements Serializable {
     }
 
     
-    public User(String firstName, String middleName, String lastName, String email, String userId, String password) {
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
+    public User(String email, String userId, String password) {
         this.email = email;
         this.userId = userId;
         this.password = password;
     }
 
-
     public Long getId() {
         return id;
     }
 
-     public void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getEmail() {

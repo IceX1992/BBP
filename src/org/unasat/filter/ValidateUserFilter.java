@@ -40,14 +40,11 @@ public class ValidateUserFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-	
-		 String firstName = request.getParameter("firstName");
-		 String middleName = request.getParameter("middleName");
-		 String lastName = request.getParameter("lastName");
+
 		 String email = request.getParameter("email");
 		 String userId = request.getParameter("userId");
 		 String password = request.getParameter("password");
-		 User user = new User(firstName,middleName,lastName, email,userId, password);
+		 User user = new User(email,userId, password);
 		 List<String> errors = ValidateService.validate(user);
 
 	        if (!errors.isEmpty()) {

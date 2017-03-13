@@ -69,7 +69,7 @@
                             <div class="form-group">
                                 <label for="license-plate" class="control-label col-md-3 col-sm-3 col-xs-12">License plate <span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="license-plate" class="form-control col-md-7 col-xs-12" type="text" required="required" name="license-plate">
+                                    <input id="license-plate" class="form-control col-md-7 col-xs-12" type="text" pattern="^[a-zA-Z0-9\-_]*$" required="required" name="license-plate">
                                 </div>
                             </div>
                             <div class="ln_solid"></div>
