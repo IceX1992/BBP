@@ -35,6 +35,14 @@ public class Ride {
         this.busRoute = busRoute;
     }
 
+    public Ride(Long id,Date actualDeparture, Date actualArrival, Long soldTickets, BusRoute busRoute) {
+        this.id = id;
+        this.actualDeparture = actualDeparture;
+        this.actualArrival = actualArrival;
+        this.soldTickets = soldTickets;
+        this.busRoute = busRoute;
+    }
+
     public Ride() {
     }
 

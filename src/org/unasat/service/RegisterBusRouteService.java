@@ -37,6 +37,10 @@ public class RegisterBusRouteService {
         return busRouteDao.getBusRouteByBusRouteName(busRouteName);
     }
 
+    public BusRoute findByBusRouteId(Long busRouteId){
+        return busRouteDao.getBusRouteByBusRouteId(busRouteId);
+    }
+
     public List<BusRoute> getAll(){
         return  busRouteDao.getListOfBusRoutes();
     }
