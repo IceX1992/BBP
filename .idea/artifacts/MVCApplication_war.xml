@@ -2,7 +2,7 @@
   <artifact type="war" name="MVCApplication:war">
     <output-path>$PROJECT_DIR$/target</output-path>
     <root id="archive" name="MVCApplication-0.0.1-SNAPSHOT.war">
-      <element id="artifact" artifact-name="MVCApplication:war exploded" />
+      <element id="artifact" artifact-name="BBP:war" />
     </root>
   </artifact>
 </component>

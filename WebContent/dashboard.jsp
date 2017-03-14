@@ -81,37 +81,8 @@
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        <%--<script>
-                            var countBus = "${routeCountObject}";
-                            var test = "${routeCountObject}";
-
-                            $("#barId").attr({
-                                "style" : "width:${listValue.count}%"
-                            });
-
-                        </script>--%>
                     </c:forEach>
-
-                    <%--
-                    <div class="widget_summary">
-                        <div class="w_left w_25">
-                            <span>0.1.5.6</span>
-                        </div>
-                        <div class="w_center w_55">
-                            <div class="progress">
-                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60"
-                                     aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
-                                    <span class="sr-only">60% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w_right w_20">
-                            <span>1k</span>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>--%>
-
-                </div>
+                    </div>
             </div>
         </div>
 

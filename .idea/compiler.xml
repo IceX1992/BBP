@@ -22,10 +22,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="BBP" />
         <module name="MVCApplication" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="BBP" target="1.6" />
       <module name="MVCApplication" target="1.6" />
     </bytecodeTargetLevel>
   </component>
